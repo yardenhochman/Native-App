@@ -6,11 +6,10 @@ export default class MainDisplay extends React.Component {
   render() {
     
     return <View style={styles.container}>
-        <Text>{this.props.poses[0].name} </Text>
         <IndicatorViewPager>
-          {this.props.poses.map(pose => <View key={pose.img}>
+          {this.props.poses.map(pose => (<View key={pose.img}>
               <Image key={pose.img} source={{ uri: `${pose.img}` }} />
-            </View>)}
+            </View>))}
         </IndicatorViewPager>
       </View>;
   }
