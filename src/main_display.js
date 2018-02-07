@@ -1,11 +1,13 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { ViewPagerAndroid,Image, StyleSheet, Text, View } from 'react-native';
 
 export default class MainDisplay extends React.Component {
   render() {
     return <View style={styles.container}>
         <Text>{this.props.poses[0].name} </Text>
-        <Image source={{ uri: `${this.props.poses[0].img}` }} style={{ width: 40, height: 40 }} />
+        <ViewPagerAndroid>
+          {this.props.poses.map(pose => <Image source={{ uri: `${pose.img}` }} />)}
+        </ViewPagerAndroid>
       </View>;
   }
 }
