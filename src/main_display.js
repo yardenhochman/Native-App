@@ -6,7 +6,9 @@ export default class MainDisplay extends React.Component {
     return <View style={styles.container}>
         <Text>{this.props.poses[0].name} </Text>
         <ViewPagerAndroid>
-        {this.props.poses.map(pose => <View><Image key={pose.img} source={{ uri: `${pose.img}` }} /></View>)}
+          {this.props.poses.map(pose => <View key={pose.img}>
+              <Image key={pose.img} source={{ uri: `${pose.img}` }} />
+            </View>)}
         </ViewPagerAndroid>
       </View>;
   }
