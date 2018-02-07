@@ -2,86 +2,19 @@ import React from 'react';
 import { ViewPagerAndroid,Image, StyleSheet, Text, View } from 'react-native';
 import { PagerTabIndicator, IndicatorViewPager, PagerTitleIndicator, PagerDotIndicator } from 'rn-viewpager';
 
-export default class MainDisplay extends Component {
-    render() {
-        return (
-            <View style={{flex:1}}>
-                <IndicatorViewPager
-                    style={{height:200}}
-                    indicator={this._renderDotIndicator()}
-                >
-                    <View style={{backgroundColor:'cadetblue'}}>
-                        <Text>page one</Text>
-                    </View>
-                    <View style={{backgroundColor:'cornflowerblue'}}>
-                        <Text>page two</Text>
-                    </View>
-                    <View style={{backgroundColor:'#1AA094'}}>
-                        <Text>page three</Text>
-                    </View>
-                </IndicatorViewPager>
-
-                <IndicatorViewPager
-					style={{flex:1, paddingTop:20, backgroundColor:'white'}}
-                    indicator={this._renderTitleIndicator()}
-                >
-                    <View style={{backgroundColor:'cadetblue'}}>
-                        <Text>page one</Text>
-                    </View>
-                    <View style={{backgroundColor:'cornflowerblue'}}>
-                        <Text>page two</Text>
-                    </View>
-                    <View style={{backgroundColor:'#1AA094'}}>
-                        <Text>page three</Text>
-                    </View>
-                </IndicatorViewPager>
-                
-                <IndicatorViewPager
-					style={{flex:1, paddingTop:20, backgroundColor:'white'}}
-                    indicator={this._renderTabIndicator()}
-                >
-                    <View style={{backgroundColor:'cadetblue'}}>
-                        <Text>page one</Text>
-                    </View>
-                    <View style={{backgroundColor:'cornflowerblue'}}>
-                        <Text>page two</Text>
-                    </View>
-                    <View style={{backgroundColor:'#1AA094'}}>
-                        <Text>page three</Text>
-                    </View>
-                </IndicatorViewPager>
-            </View>
-        );
-    }
-
-    _renderTitleIndicator() {
-        return <PagerTitleIndicator titles={['one', 'two', 'three']} />;
-    }
-
-    _renderDotIndicator() {
-        return <PagerDotIndicator pageCount={3} />;
-    }
+export default class MainDisplay extends React.Component {
+  render() {
     
-    _renderTabIndicator() {
-        let tabs = [{
-                text: 'Home',
-                iconSource: require('../imgs/ic_tab_home_normal.png'),
-                selectedIconSource: require('../imgs/ic_tab_home_click.png')
-            },{
-                text: 'Message',
-                iconSource: require('../imgs/ic_tab_task_normal.png'),
-                selectedIconSource: require('../imgs/ic_tab_task_click.png')
-            },{
-                text: 'Profile',
-                iconSource: require('../imgs/ic_tab_my_normal.png'),
-                selectedIconSource: require('../imgs/ic_tab_my_click.png')
-        }];
-        return <PagerTabIndicator tabs={tabs} />;
-    }
-
+    return <View style={styles.container}>
+        <Text>{this.props.poses[0].name} </Text>
+        <IndicatorViewPager>
+          {this.props.poses.map(pose => <View key={pose.img}>
+              <Image key={pose.img} source={{ uri: `${pose.img}` }} />
+            </View>)}
+        </IndicatorViewPager>
+      </View>;
+  }
 }
-
-
 
 const styles = StyleSheet.create({
   container: {
