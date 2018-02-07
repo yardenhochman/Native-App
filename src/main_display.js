@@ -5,7 +5,7 @@ export default class MainDisplay extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>This is the Main Display </Text>
+        <Text>{poses[0].name} </Text>
       </View>
     );
   }
